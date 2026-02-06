@@ -73,7 +73,7 @@ else{no.style.display='none';err.textContent="System Error: No is not an option"
 
 document.getElementById('yes').onclick=()=>{document.getElementById('ask').classList.add('hidden');document.getElementById('final').classList.remove('hidden');fireworks();
 
-  const sound=document.getElementById("typeSound")
+  const sound=document.getElementById("typeSound");
   sound.play().then(()=>sound.pause());
 
   typeSequence(".type", 42, 600);
@@ -108,7 +108,7 @@ p.forEach(o=>{o.y+=o.v;o.l++;heart(o.x,o.y,o.s)});p=p.filter(o=>o.l<200);request
 
       if (text[i] !== " ") {
         sound.currentTime=0;
-        sound.play().catch(() => {});
+        sound.play().catch(()=>{});
       }
 
       i++;
@@ -125,7 +125,7 @@ p.forEach(o=>{o.y+=o.v;o.l++;heart(o.x,o.y,o.s)});p=p.filter(o=>o.l<200);request
   typeNext();
   }
 </script>
-  <audio id="typesound" preload="auto">
+  <audio id="typeSound" preload="auto">
     <source src="https://cdn.pixabay.com/audio/2022/03/15/audio_8c8a2d6f7c.mp3" type="audio/mpeg">
   </audio>
 </body>
