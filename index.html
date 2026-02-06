@@ -71,13 +71,62 @@ no.onmouseenter=()=>{if(h<8){h++;no.style.transform=`translate(${Math.random()*3
 else if(s<5){s++;no.style.transform=`translate(${Math.random()*350-290}px, ${Math.random()*360-310}px) scale(${1-s*0.1})`;no.style.opacity=1-s*0.1;err.textContent="System Error: No is not an option"}
 else{no.style.display='none';err.textContent="System Error: No is not an option"}};
 
-document.getElementById('yes').onclick=()=>{document.getElementById('ask').classList.add('hidden');document.getElementById('final').classList.remove('hidden');fireworks()};
+document.getElementById('yes').onclick=()=>{document.getElementById('ask').classList.add('hidden');document.getElementById('final').classList.remove('hidden');fireworks();
+
+  const sound=document.getElementById("typeSound")
+  sound.play().then(()=>sound.pause());
+
+  typeSequence(".type", 42, 600);
+};
 
 function fireworks(){const c=document.getElementById('fx'),x=c.getContext('2d');c.width=innerWidth;c.height=innerHeight;let p=[];
 function heart(px,py,s){x.beginPath();x.moveTo(px,py);x.bezierCurveTo(px-s,py-s,px-2*s,py+s/3,px,py+s);x.bezierCurveTo(px+2*s,py+s/3,px+s,py-s,px,py);x.fill()}
 (function draw(){x.clearRect(0,0,c.width,c.height);x.fillStyle='rgba(255,95,162,.9)';
 if(Math.random()<.3)p.push({x:Math.random()*c.width,y:c.height+20,v:-Math.random()*3-2,s:Math.random()*6+6,l:0});
 p.forEach(o=>{o.y+=o.v;o.l++;heart(o.x,o.y,o.s)});p=p.filter(o=>o.l<200);requestAnimationFrame(draw)})()}
+
+  function typeSequence(selector, speed=40, pause=500) {
+  const elements=[...document.querySelectorAll(selector)];
+  const sound=document.getElementById("typeSound");
+
+  let index=0;
+
+  function typeNext() {
+    if (index >=elements.length) {
+      sound.pause();
+      return;
+    }
+
+    const el=elements[index];
+    const text=el.dataset.text;
+    el.textContent="";
+    let i=0;
+
+    function typeChar() {
+      if (i<text.length) {
+        el.textContent+=text[i];
+
+      if (text[i] !== " ") {
+        sound.currentTime=0;
+        sound.play().catch(() => {});
+      }
+
+      i++;
+        setTimeout(typeChar, speed);
+      } else {
+        index++;
+        setTimeout(typeNext, pause);
+      }
+    }
+
+    typeChar();
+  }
+
+  typeNext();
+  }
 </script>
+  <audio id="typesound" preload="auto">
+    <source src="https://cdn.pixabay.com/audio/2022/03/15/audio_8c8a2d6f7c.mp3" type="audio/mpeg">
+  </audio>
 </body>
 </html>
