@@ -80,7 +80,7 @@ if(Math.random()<.3)p.push({x:Math.random()*c.width,y:c.height+20,v:-Math.random
 p.forEach(o=>{o.y+=o.v;o.l++;heart(o.x,o.y,o.s)});p=p.filter(o=>o.l<200);requestAnimationFrame(draw)})()}
 </script>
   
-<audio id="typesound" preload="auto">
+<audio id="typeSound" preload="auto">
   <source src="https://cdn.pixabay.com/audio/2022/03/15/audio_8c8a2d6f7c.mp3" type="audio/mpeg">
 </audio>
   
