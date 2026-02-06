@@ -67,7 +67,7 @@ const no=document.getElementById('no'),err=document.getElementById('err');
 let h=0,s=0;
 const sass=["Nice try 😏","Absolutely not.","Be serious 😂","System thinking… nope.","Wild choice.","Plot twist: No is broken.","Last warning 😌","System Error: No is not an option"];
 no.onmouseenter=()=>{if(h<8){h++;no.style.transform=`translate(${Math.random()*350-290}px,${Math.random()*360-310}px)`;err.textContent=sass[h-1]}
-else if(s<5){s++;no.style.transform=`translate(${Math.random()*120-60}px, ${Math.random()*120-60}px) scale(${1-s*0.1})`;no.style.opacity=1-s*0.1;err.textContent="System Error: No is not an option"}
+else if(s<5){s++;no.style.transform=`translate(${Math.random()*290-190}px, ${Math.random()*280-210}px) scale(${1-s*0.1})`;no.style.opacity=1-s*0.1;err.textContent="System Error: No is not an option"}
 else{no.style.display='none';err.textContent="System Error: No is not an option"}};
 
 document.getElementById('yes').onclick=()=>{document.getElementById('ask').classList.add('hidden');document.getElementById('final').classList.remove('hidden');fireworks()};
