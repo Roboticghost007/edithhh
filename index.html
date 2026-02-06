@@ -42,9 +42,9 @@ canvas{position:absolute;inset:0;pointer-events:none}
 </div>
 
 <div id="final" class="screen hidden">
-  <p id="typedText" class="typed"></p>
   <canvas id="fx"></canvas>
   <div class="card">
+    <p id="typedText" class="typed"></p>
     <h1>She said YES 🎉</h1>
     <p>Edith, this isn’t just about Valentine’s Day. It’s about choosing you, today and every random day after. Thank you for saying yes.</p>
     <p><strong>You're stuck with me now. 😌</strong></p>
@@ -79,10 +79,5 @@ function heart(px,py,s){x.beginPath();x.moveTo(px,py);x.bezierCurveTo(px-s,py-s,
 if(Math.random()<.3)p.push({x:Math.random()*c.width,y:c.height+20,v:-Math.random()*3-2,s:Math.random()*6+6,l:0});
 p.forEach(o=>{o.y+=o.v;o.l++;heart(o.x,o.y,o.s)});p=p.filter(o=>o.l<200);requestAnimationFrame(draw)})()}
 </script>
-  
-<audio id="typeSound" preload="auto">
-  <source src="https://cdn.pixabay.com/audio/2022/03/15/audio_8c8a2d6f7c.mp3" type="audio/mpeg">
-</audio>
-  
 </body>
 </html>
